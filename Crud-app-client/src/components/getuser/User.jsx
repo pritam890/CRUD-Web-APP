@@ -5,15 +5,16 @@ import axios from "axios";
 import toast from "react-hot-toast";
 function User(){
     const [users,setUsers] = useState([]);
+    axios.defaults.withCredentials = true;
     useEffect(()=>{
         const fetchData = async()=>{
-            const response = await axios.get("http://localhost:8000/api/getAll")
+            const response = await axios.get("https://crud-web-api.vercel.app/getAll")
             setUsers(response.data)
         }
         fetchData();
     },[])
     const deleteUser= async(userId)=>{
-        await axios.delete(`http://localhost:8000/api/deleteUser/${userId}`)
+        await axios.delete(`https://crud-web-api.vercel.app/deleteUser/${userId}`)
         .then((response)=>{
             setUsers((prevUser)=>prevUser.filter((user)=>user._id !==userId))
             toast.success(response.data.msg, {position: 'top-right'})
