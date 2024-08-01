@@ -8,13 +8,13 @@ function User(){
     axios.defaults.withCredentials = true;
     useEffect(()=>{
         const fetchData = async()=>{
-            const response = await axios.get("https://crud-web-api.vercel.app/getAll")
+            const response = await axios.get("https://crud-web-api.vercel.app/api/getAll")
             setUsers(response.data)
         }
         fetchData();
     },[])
     const deleteUser= async(userId)=>{
-        await axios.delete(`https://crud-web-api.vercel.app/deleteUser/${userId}`)
+        await axios.delete(`https://crud-web-api.vercel.app/api/deleteUser/${userId}`)
         .then((response)=>{
             setUsers((prevUser)=>prevUser.filter((user)=>user._id !==userId))
             toast.success(response.data.msg, {position: 'top-right'})
