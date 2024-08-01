@@ -6,10 +6,13 @@ import cors from "cors"
 import route from "./routes/userRoute.js"
 
 const app=express();
+app.use(cors({
+  origin: 'https://crud-web-app-frontend.vercel.app', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
-header('Access-Control-Allow-Origin: https://crud-web-app-frontend.vercel.app');
-header('Access-Control-Allow-Methods: POST, GET, PUT, DELETE');
-header('Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin, Authorization');
+
 dotenv.config();
 
 const PORT = 8000;
