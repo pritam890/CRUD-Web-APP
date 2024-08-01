@@ -9,7 +9,7 @@ const app=express();
 app.use(bodyParser.json());
 app.use(cors(
     {
-        origin: ["https://deploy-mern-1whq.vercel.app"],
+        origin: ["https://crud-web-app-frontend.vercel.app"],
         methods: ["POST","GET","PUT","DELETE"],
         credentials: true
     }
