@@ -18,14 +18,14 @@ function Update(){
         setUser({...user,[name]:value});
     }
     useEffect(()=>{
-        axios.get(`https://crud-web-api.vercel.app/getById/${id}`)
+        axios.get(`https://crud-web-api.vercel.app/api/getById/${id}`)
         .then((response)=>{
             setUser(response.data);
         }).catch(err=>console.log(err))
     },[id])
     const submitForm= async(e)=>{
         e.preventDefault();
-        await axios.put(`https://crud-web-api.vercel.app/update/${id}`,user)
+        await axios.put(`https://crud-web-api.vercel.app/api/update/${id}`,user)
         .then((response)=>{
             toast.success(response.data.msg,{position:"top-right"})
             navigate("/");
