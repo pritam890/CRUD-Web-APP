@@ -12,19 +12,20 @@ function Update(){
     const {id}=useParams();
     const navigate=useNavigate();
     const [user,setUser] = useState(users);
+    axios.defaults.withCredentials = true;
     const inputChangeHandler = (e)=>{
         const {name,value}=e.target;
         setUser({...user,[name]:value});
     }
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/getById/${id}`)
+        axios.get(`https://crud-web-api.vercel.app/getById/${id}`)
         .then((response)=>{
             setUser(response.data);
         }).catch(err=>console.log(err))
     },[id])
     const submitForm= async(e)=>{
         e.preventDefault();
-        await axios.put(`http://localhost:8000/api/update/${id}`,user)
+        await axios.put(`https://crud-web-api.vercel.app/update/${id}`,user)
         .then((response)=>{
             toast.success(response.data.msg,{position:"top-right"})
             navigate("/");
