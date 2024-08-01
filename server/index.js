@@ -16,8 +16,8 @@ app.use(cors(
 ));
 dotenv.config();
 
-const PORT = process.env.PORT || 7000;
-const URL = process.env.MONGOURL;
+const PORT = 8000;
+const URL = "mongodb+srv://pritamadhikari0001:Pritam@cluster0.tmylbjd.mongodb.net/crudApp?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.connect(URL).then(()=>{
     
