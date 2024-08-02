@@ -7,7 +7,8 @@ import route from "./routes/userRoute.js"
 
 const app=express();
 app.use(cors({
-  origin: 'https://crud-web-app-frontend.vercel.app', 
+  origin: 'https://crud-web-app-frontend.vercel.app',
+  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
